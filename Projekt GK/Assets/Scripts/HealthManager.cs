@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
+    private int change;
+
+    public Image[] hearts;
 
     public PlayerController thePlayer;
 
@@ -27,6 +31,7 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        change = maxHealth;
         //thePlayer = FindObjectOfType<PlayerController>();
 
         respawnPoint = thePlayer.transform.position;
@@ -51,6 +56,12 @@ public class HealthManager : MonoBehaviour
                 playerRenderer.enabled = true;
             }
         }
+        for (int i = 0; i < change; i++)
+            if (currentHealth < i + 1)
+            {
+                Destroy(hearts[i].gameObject);
+                change--;
+            }
     }
 
     public void HurtPlayer(int damage, Vector3 direction)
