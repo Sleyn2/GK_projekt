@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
 
     public GameObject playerModel;
 
+    public float knockBackForce;
+    public float knockbackTime;
+    private float knockBackCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +30,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float oldMoveDirectionY = moveDirection.y;
-        moveDirection = (transform.forward * Input.GetAxis("Vertical"))+ (transform.right * Input.GetAxis("Horizontal"));
-        moveDirection = moveDirection.normalized * moveSpeed;
-        moveDirection.y = oldMoveDirectionY;
-        if (controller.isGrounded)
+        if (knockBackCounter <= 0)
         {
-            moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump"))
+            float oldMoveDirectionY = moveDirection.y;
+            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            moveDirection = moveDirection.normalized * moveSpeed;
+            moveDirection.y = oldMoveDirectionY;
+            if (controller.isGrounded)
             {
-                moveDirection.y = jumpForce;
+                moveDirection.y = 0f;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    moveDirection.y = jumpForce;
+                }
             }
+        }
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
         }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
@@ -51,5 +62,12 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("isGrounded", controller.isGrounded);
         anim.SetFloat("speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
+    }
+
+    public void Knockback(Vector3 direction)
+    {
+        knockBackCounter = knockbackTime;
+        moveDirection = direction * knockBackForce;
+        moveDirection.y = knockBackForce;
     }
 }

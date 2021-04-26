@@ -476,6 +476,8 @@ MonoBehaviour:
   pivot: {fileID: 885710273}
   rotateSpeed: 10
   playerModel: {fileID: 779423796}
+  knockBackForce: 13
+  knockbackTime: 0.3
 --- !u!143 &285210255
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5465,8 +5467,10 @@ GameObject:
   - component: {fileID: 1660086048}
   - component: {fileID: 1660086047}
   - component: {fileID: 1660086046}
+  - component: {fileID: 1660086051}
+  - component: {fileID: 1660086050}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Damage Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5548,6 +5552,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660086050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660086045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c016c415b722b1b4093b90ba207402bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToGive: 1
+--- !u!65 &1660086051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660086045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 1.2, z: 1.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1712524435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 170710, guid: 38c2e9df535eb8b4fbee8f766e484fdd, type: 3}
@@ -6466,6 +6496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2008536002}
   - component: {fileID: 2008536001}
+  - component: {fileID: 2008536003}
   m_Layer: 0
   m_Name: Game manager
   m_TagString: Untagged
@@ -6501,6 +6532,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008536003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008536000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c129185b310c1944b93a053663eccb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  thePlayer: {fileID: 0}
 --- !u!1 &2009444294
 GameObject:
   m_ObjectHideFlags: 0
