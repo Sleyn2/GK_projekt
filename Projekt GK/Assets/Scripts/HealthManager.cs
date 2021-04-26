@@ -9,25 +9,81 @@ public class HealthManager : MonoBehaviour
 
     public PlayerController thePlayer;
 
+    public float invincibilityLength;
+    private float invincibilityCounter;
+
+    public Renderer playerRenderer;
+    private float flashCounter;
+    public float flashLength = 0.1f;
+
+    private bool isRespawning;
+    private Vector3 respawnPoint;
+
+
+    public CharacterController charController;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        thePlayer = FindObjectOfType<PlayerController>();
+        //thePlayer = FindObjectOfType<PlayerController>();
+
+        respawnPoint = thePlayer.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(invincibilityCounter>0)
+        {
+            invincibilityCounter -= Time.deltaTime;
+
+            flashCounter -= Time.deltaTime;
+            if (flashCounter <= 0)
+            {
+                playerRenderer.enabled = !playerRenderer.enabled;
+                flashCounter = flashLength;
+            }
+
+            if(invincibilityCounter <=0)
+            {
+                playerRenderer.enabled = true;
+            }
+        }
     }
 
     public void HurtPlayer(int damage, Vector3 direction)
     {
-        currentHealth -= damage;
+        if (invincibilityCounter<=0)
+        {
+            currentHealth -= damage;
 
-        thePlayer.Knockback(direction);
+            if (currentHealth <= 0)
+            {
+                Respawn();
+            }
+            else
+            {
+                thePlayer.Knockback(direction);
+
+                invincibilityCounter = invincibilityLength;
+
+                playerRenderer.enabled = false;
+
+                flashCounter = flashLength;
+            }
+        }     
     }
+
+    public void Respawn()
+    {
+        charController.enabled = false;
+        thePlayer.transform.position = respawnPoint;
+        currentHealth = maxHealth;
+        charController.enabled = true;
+    }
+
     public void HealPlayer(int healAmount)
     {
         currentHealth += healAmount;
