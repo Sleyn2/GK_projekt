@@ -23,6 +23,8 @@ public class HealthManager : MonoBehaviour
     private bool isRespawning;
     private Vector3 respawnPoint;
 
+    public float respawnLeghth;
+
 
     public CharacterController charController;
 
@@ -91,14 +93,45 @@ public class HealthManager : MonoBehaviour
 
     public void Respawn()
     {
+        // charController.enabled = false;
+        // thePlayer.transform.position = respawnPoint;
+        // currentHealth = maxHealth;
+        // charController.enabled = true;
+        if (!isRespawning)
+        {
+            StartCoroutine("RespawnCo");
+        }
+        //reset wyœwietlanych serc
+        //change = maxHealth;
+        //for(int i = 0; i<maxHealth;i++)
+        //    hearts[i].enabled = true;
+        
+    }
+
+    public IEnumerator RespawnCo()
+    {
+        isRespawning = true;
+        thePlayer.gameObject.SetActive(false);
+        
+
+        yield return new WaitForSeconds(respawnLeghth);
+        isRespawning = false;
+
+        thePlayer.gameObject.SetActive(true);
+
         charController.enabled = false;
         thePlayer.transform.position = respawnPoint;
         currentHealth = maxHealth;
         charController.enabled = true;
 
+        invincibilityCounter = invincibilityLength;
+        playerRenderer.enabled = false;
+
+        flashCounter = flashLength;
+
         //reset wyœwietlanych serc
         change = maxHealth;
-        for(int i = 0; i<maxHealth;i++)
+        for (int i = 0; i < maxHealth; i++)
             hearts[i].enabled = true;
     }
 
@@ -109,5 +142,10 @@ public class HealthManager : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+    }
+
+    public void SetSpawnPoint(Vector3 newPosition)
+    {
+        respawnPoint = newPosition;
     }
 }
