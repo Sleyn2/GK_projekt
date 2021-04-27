@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public int maxHealth;
+    public int maxHealth; //dzia³a od 1 do 5 
     public int currentHealth;
     private int change;
 
@@ -32,6 +32,8 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth = maxHealth;
         change = maxHealth;
+        for (int i = maxHealth; i < 5; i++) //dzia³a od 1 do 5 
+            hearts[i].enabled = false;
         //thePlayer = FindObjectOfType<PlayerController>();
 
         respawnPoint = thePlayer.transform.position;
@@ -59,7 +61,7 @@ public class HealthManager : MonoBehaviour
         for (int i = 0; i < change; i++)
             if (currentHealth < i + 1)
             {
-                Destroy(hearts[i].gameObject);
+                hearts[i].enabled = false;
                 change--;
             }
     }
@@ -93,6 +95,11 @@ public class HealthManager : MonoBehaviour
         thePlayer.transform.position = respawnPoint;
         currentHealth = maxHealth;
         charController.enabled = true;
+
+        //reset wyœwietlanych serc
+        change = maxHealth;
+        for(int i = 0; i<maxHealth;i++)
+            hearts[i].enabled = true;
     }
 
     public void HealPlayer(int healAmount)

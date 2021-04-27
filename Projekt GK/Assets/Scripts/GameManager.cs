@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public void AddCoin(int coinToAdd)
     {
         currentCoin = currentCoin + coinToAdd;
-        coinText.text = "Coins: " + currentCoin;
+        coinText.text = ": " + currentCoin;
     }
 
 }
