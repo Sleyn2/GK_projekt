@@ -76,7 +76,7 @@ public class HealthManager : MonoBehaviour
 
             if (currentHealth <= 0)
             {
-                Respawn();
+                Respawn(true);
             }
             else
             {
@@ -91,21 +91,34 @@ public class HealthManager : MonoBehaviour
         }     
     }
 
-    public void Respawn()
+    public void FallTriggered(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+            Respawn(true);
+        else
+            Respawn(false);
+    }
+
+    public void Respawn(bool hpReset)
     {
         // charController.enabled = false;
         // thePlayer.transform.position = respawnPoint;
         // currentHealth = maxHealth;
         // charController.enabled = true;
-        if (!isRespawning)
+        if (!isRespawning && hpReset)
         {
             StartCoroutine("RespawnCo");
+        }
+        else if(!isRespawning && !hpReset)
+        {
+            StartCoroutine("RespawnFall");
         }
         //reset wyœwietlanych serc
         //change = maxHealth;
         //for(int i = 0; i<maxHealth;i++)
         //    hearts[i].enabled = true;
-        
     }
 
     public IEnumerator RespawnCo()
@@ -133,6 +146,26 @@ public class HealthManager : MonoBehaviour
         change = maxHealth;
         for (int i = 0; i < maxHealth; i++)
             hearts[i].enabled = true;
+    }
+    public IEnumerator RespawnFall()
+    {
+        isRespawning = true;
+        thePlayer.gameObject.SetActive(false);
+
+
+        yield return new WaitForSeconds(respawnLeghth);
+        isRespawning = false;
+
+        thePlayer.gameObject.SetActive(true);
+
+        charController.enabled = false;
+        thePlayer.transform.position = respawnPoint;
+        charController.enabled = true;
+
+        invincibilityCounter = invincibilityLength;
+        playerRenderer.enabled = false;
+
+        flashCounter = flashLength;
     }
 
     public void HealPlayer(int healAmount)
