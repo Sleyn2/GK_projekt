@@ -553,6 +553,7 @@ MonoBehaviour:
   playerModel: {fileID: 779423796}
   knockBackForce: 13
   knockbackTime: 0.3
+  slopeRayLength: 1.5
 --- !u!143 &285210255
 CharacterController:
   m_ObjectHideFlags: 0

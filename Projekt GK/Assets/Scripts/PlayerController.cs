@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public float knockbackTime;
     private float knockBackCounter;
 
+    //jiterring
+    public float slopeRayLength;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +39,9 @@ public class PlayerController : MonoBehaviour
             moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
             moveDirection = moveDirection.normalized * moveSpeed;
             moveDirection.y = oldMoveDirectionY;
-            if (controller.isGrounded)
+            if (controller.isGrounded || OnSlope())
             {
-                moveDirection.y = 0f;
+                //moveDirection.y = 0f;
                 if (Input.GetButtonDown("Jump"))
                 {
                     moveDirection.y = jumpForce;
@@ -61,6 +64,8 @@ public class PlayerController : MonoBehaviour
         }
 
         anim.SetBool("isGrounded", controller.isGrounded);
+        if(OnSlope())
+            anim.SetBool("isGrounded", true);
         anim.SetFloat("speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
     }
 
@@ -69,5 +74,15 @@ public class PlayerController : MonoBehaviour
         knockBackCounter = knockbackTime;
         moveDirection = direction * knockBackForce;
         moveDirection.y = knockBackForce;
+    }
+
+    private bool OnSlope()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, controller.height / 2 * slopeRayLength))
+            if (hit.normal != Vector3.up)
+                return true;
+        return false;
     }
 }
