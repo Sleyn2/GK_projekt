@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public float knockbackTime;
     private float knockBackCounter;
 
+    //double jump
+    private bool doubleJump = true;
+
     //jiterring
     public float slopeRayLength;
 
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = oldMoveDirectionY;
             if (controller.isGrounded || OnSlope())
             {
+                doubleJump = true;
                 if (controller.isGrounded)
                 {
                     moveDirection.y = 0f;
@@ -48,6 +52,16 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButtonDown("Jump"))
                 {
                     moveDirection.y = jumpForce;
+                }
+            }
+            else if (doubleJump)
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    anim.SetBool("doubleJump", true);
+
+                    moveDirection.y = jumpForce;
+                    doubleJump = false;
                 }
             }
         }
@@ -67,8 +81,12 @@ public class PlayerController : MonoBehaviour
         }
 
         anim.SetBool("isGrounded", controller.isGrounded);
-        if(OnSlope())
+
+        if (OnSlope() || controller.isGrounded)
+        {
             anim.SetBool("isGrounded", true);
+            anim.SetBool("doubleJump", false);
+        }
         anim.SetFloat("speed", (Mathf.Abs(Input.GetAxis("Vertical")) + Mathf.Abs(Input.GetAxis("Horizontal"))));
     }
 
