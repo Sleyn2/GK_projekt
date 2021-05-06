@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
+    public ParticleSystem getCoin;
 
     public int coinValue;
 
@@ -24,6 +25,8 @@ public class CoinPickup : MonoBehaviour
         if(other.tag == "Player")
         {
             FindObjectOfType<GameManager>().AddCoin(coinValue);
+
+            Instantiate(getCoin, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }
