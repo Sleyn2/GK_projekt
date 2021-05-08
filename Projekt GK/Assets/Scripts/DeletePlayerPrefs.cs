@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class DeletePlayerPrefs : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public void playGame()
+   public void DeletePrefs()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("LevelSelection");
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("QUIT!");
-        Application.Quit();
     }
 }
