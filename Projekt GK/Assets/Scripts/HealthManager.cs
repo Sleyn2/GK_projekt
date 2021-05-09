@@ -125,7 +125,13 @@ public class HealthManager : MonoBehaviour
     {
         isRespawning = true;
         thePlayer.gameObject.SetActive(false);
-        
+
+        //przeciwnicy wracaja do patrolowania
+        EnemyFollow[] enemies = FindObjectsOfType<EnemyFollow>();
+        foreach (EnemyFollow enemy in enemies)
+        {
+            enemy.chasingPlayer = false;
+        }
 
         yield return new WaitForSeconds(respawnLeghth);
         isRespawning = false;
@@ -146,6 +152,8 @@ public class HealthManager : MonoBehaviour
         change = maxHealth;
         for (int i = 0; i < maxHealth; i++)
             hearts[i].enabled = true;
+
+        
     }
     public IEnumerator RespawnFall()
     {

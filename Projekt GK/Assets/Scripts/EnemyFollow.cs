@@ -44,7 +44,7 @@ public class EnemyFollow : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(transform.position, walkPoint) > 0.5f)
+                if (Vector3.Distance(transform.position, walkPoint) > 1f)
                 {
                     Vector3 pos = Vector3.MoveTowards(transform.position, walkPoint, speed * Time.fixedDeltaTime);
                     rig.MovePosition(pos);
