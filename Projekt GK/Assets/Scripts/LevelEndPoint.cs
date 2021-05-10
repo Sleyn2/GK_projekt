@@ -17,8 +17,13 @@ public class LevelEndPoint : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            //Zakoñczenie liczenia czasu
+            GameObject.Find("Player").SendMessage("finish");
+            
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
+                
+
                 // Add Last level completition screen to add
                 Debug.Log("Win");
                 //Cursor.lockState = CursorLockMode.Confined;
@@ -37,6 +42,7 @@ public class LevelEndPoint : MonoBehaviour
                     PlayerPrefs.SetInt("levelAt", nextSceneLoad);
                 }
             }
+            
         }
     }
 }
