@@ -154,3 +154,24 @@ System memory in use after: 68.3 MB.
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1813.
 Total: 2.201300 ms (FindLiveObjects: 0.240300 ms CreateObjectMapping: 0.078200 ms MarkObjects: 1.865100 ms  DeleteObjects: 0.016600 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.032173 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.958 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1284 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 68.2 MB.
+System memory in use after: 68.3 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1816.
+Total: 125.023600 ms (FindLiveObjects: 14.355200 ms CreateObjectMapping: 0.163400 ms MarkObjects: 108.354000 ms  DeleteObjects: 2.148700 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
