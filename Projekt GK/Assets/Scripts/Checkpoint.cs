@@ -5,10 +5,10 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public HealthManager healthManager;
-    public Renderer rend;
 
-    public Material cOn;
-    public Material cOff;
+    public GameObject explosionPrefab;
+    public bool active;
+    public ParticleSystem magicznyPylLauncher;
 
     // Start is called before the first frame update
     void Start()
@@ -28,22 +28,29 @@ public class Checkpoint : MonoBehaviour
         foreach (Checkpoint cp in checkpoints)
         {
             cp.CheckpointOff();
+            cp.active = false;
         }
-
-        rend.material = cOn;
+        ParticleSystem.MainModule psMain = magicznyPylLauncher.main;
+        psMain.startColor = new Color(0, 155, 0);
+        active = true;
     }
 
     public void CheckpointOff()
     {
-        rend.material = cOff;
+        ParticleSystem.MainModule psMain = magicznyPylLauncher.main;
+        psMain.startColor = new Color(255, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && active == false)
         {
             healthManager.SetSpawnPoint(this.transform.position);
             CheckpointOn();
+
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
     }
+
+
 }
