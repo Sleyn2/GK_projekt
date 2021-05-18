@@ -11,6 +11,8 @@ public class LevelEndPoint : MonoBehaviour
     int nextSceneLoad;
     public GameObject levelEndScreenUI;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,14 @@ public class LevelEndPoint : MonoBehaviour
 
             string timeToShow = timerText.text;
             timeText.text = "Czas ukoñczenia poziomu: " + timeToShow;
+
+            GameObject GameManagerObject = GameObject.Find("Game manager");
+            int coinCount = GameManagerObject.GetComponent<GameManager>().currentCoin;
+            coinText.text = "Liczba zebranych monet: " + coinCount;
+
+            int healthCount = GameManagerObject.GetComponent<HealthManager>().currentHealth;
+            healthText.text = "Liczba zachowanych szans: " + healthCount;
+
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 // Add Last level completition screen to add
