@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText;
+    public TextMeshProUGUI timerText;
+    public int scoreMinutes;
+    public int scoreSeconds;
     private float startTime;
+    private float t;
     private bool finished = false;
 
     // Start is called before the first frame update
@@ -20,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         if (finished)
             return;
-        float t = Time.time - startTime;
+        t = Time.time - startTime;
         string minutes = ((int)t / 60).ToString();
         string seconds = (t % 60).ToString("f2");
         timerText.text = minutes + ":" + seconds;
@@ -28,6 +32,8 @@ public class Timer : MonoBehaviour
     public void finish()
     {
         finished = true;
+        scoreMinutes = (int)t / 60;
+        scoreSeconds = (int)t % 60;
         timerText.color = Color.yellow;
     }
 }

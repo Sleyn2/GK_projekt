@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class HealthManager : MonoBehaviour
     private Vector3 respawnPoint;
 
     public float respawnLeghth;
+
+    public GameObject deathScreenUI;
 
 
     public CharacterController charController;
@@ -133,28 +136,17 @@ public class HealthManager : MonoBehaviour
             enemy.chasingPlayer = false;
         }
 
-        yield return new WaitForSeconds(respawnLeghth);
+        yield return new WaitForSeconds(0);
         isRespawning = false;
 
         thePlayer.gameObject.SetActive(true);
 
-        charController.enabled = false;
-        thePlayer.transform.position = respawnPoint;
-        currentHealth = maxHealth;
-        charController.enabled = true;
-
-        invincibilityCounter = invincibilityLength;
-        playerRenderer.enabled = false;
-
-        flashCounter = flashLength;
-
-        //reset wyœwietlanych serc
-        change = maxHealth;
-        for (int i = 0; i < maxHealth; i++)
-            hearts[i].enabled = true;
-
-        
+        Cursor.lockState = CursorLockMode.None;
+        deathScreenUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
     }
+
     public IEnumerator RespawnFall()
     {
         isRespawning = true;
@@ -188,5 +180,12 @@ public class HealthManager : MonoBehaviour
     public void SetSpawnPoint(Vector3 newPosition)
     {
         respawnPoint = newPosition;
+    }
+
+    public void ReloadCurrentScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
