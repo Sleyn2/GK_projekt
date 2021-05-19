@@ -53,13 +53,16 @@ public class LevelEndPoint : MonoBehaviour
                 score = 0;
             scoreText.text = "Twój wynik: " + score;
 
-            //Load from file;
-            int personalBestScore = 500;
+            ScoreData savedScore = SaveSystem.LoadScore();
+            int personalBestScore = savedScore.score[SceneManager.GetActiveScene().buildIndex - 2];
+
             personalBestScoreText.text = "Twój najlepszy wynik: " + personalBestScore;
 
             if (score > personalBestScore) // New record
             {
                 newRecordText.gameObject.SetActive(true);
+                savedScore.edit(SceneManager.GetActiveScene().buildIndex - 2, score);
+                SaveSystem.SaveScore(savedScore);
             }
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
