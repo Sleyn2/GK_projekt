@@ -13,6 +13,9 @@ public class LevelEndPoint : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI personalBestScoreText;
+    public TextMeshProUGUI newRecordText;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,10 @@ public class LevelEndPoint : MonoBehaviour
             GameObject Player= GameObject.Find("Player");
             Text timerText = Player.GetComponent<Timer>().timerText;
 
+            int minutesScore = Player.GetComponent<Timer>().scoreMinutes;
+
+            int secondsScore = Player.GetComponent<Timer>().scoreSeconds;
+
             string timeToShow = timerText.text;
             timeText.text = "Czas ukoñczenia poziomu: " + timeToShow;
 
@@ -39,6 +46,21 @@ public class LevelEndPoint : MonoBehaviour
 
             int healthCount = GameManagerObject.GetComponent<HealthManager>().currentHealth;
             healthText.text = "Liczba zachowanych szans: " + healthCount;
+
+            // Wynik bazowo 400 punktów, za ka¿d¹ sekundê odejmowany jest 1 punkt, ka¿da zebrana moneta dodaje 10 punktów, ka¿da zachowana szansa dodaje 30 punktów
+            int score = 400 - (minutesScore * 60 + secondsScore) + coinCount*10 + healthCount * 30;
+            if (score < 0)
+                score = 0;
+            scoreText.text = "Twój wynik: " + score;
+
+            //Load from file;
+            int personalBestScore = 500;
+            personalBestScoreText.text = "Twój najlepszy wynik: " + personalBestScore;
+
+            if (score > personalBestScore) // New record
+            {
+                newRecordText.gameObject.SetActive(true);
+            }
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
