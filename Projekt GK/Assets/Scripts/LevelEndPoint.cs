@@ -31,7 +31,7 @@ public class LevelEndPoint : MonoBehaviour
             GameObject.Find("Player").SendMessage("finish");
 
             GameObject Player= GameObject.Find("Player");
-            Text timerText = Player.GetComponent<Timer>().timerText;
+            TextMeshProUGUI timerText = Player.GetComponent<Timer>().timerText;
 
             int minutesScore = Player.GetComponent<Timer>().scoreMinutes;
 

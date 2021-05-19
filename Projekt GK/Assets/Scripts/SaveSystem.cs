@@ -2,6 +2,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using System.Threading;
+using System;
 
 public static class SaveSystem
 {
@@ -9,7 +10,7 @@ public static class SaveSystem
     public static void SaveScore(ScoreData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/saveData.temp";
+        string path = Application.dataPath + "/save.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         stream.Position = 0;
                              
@@ -20,14 +21,21 @@ public static class SaveSystem
 
     public static ScoreData LoadScore()
     {
-        string path = Application.persistentDataPath + "/saveData.temp";
+        string path = Application.dataPath + "/save.data";
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             stream.Position = 0;
-
-            ScoreData data = formatter.Deserialize(stream) as ScoreData;
+            ScoreData data = new ScoreData();
+            try
+            {
+                data = (ScoreData)formatter.Deserialize(stream);
+            }
+            catch(Exception ex)
+            {
+                Debug.Log(ex.ToString());
+            }
             Thread.Sleep(1000);
             stream.Close();
             return data;
