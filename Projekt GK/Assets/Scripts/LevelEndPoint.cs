@@ -49,7 +49,7 @@ public class LevelEndPoint : MonoBehaviour
             healthText.text = "Liczba zachowanych szans: " + healthCount;
 
             // Wynik bazowo 400 punktów, za ka¿d¹ sekundê odejmowany jest 1 punkt, ka¿da zebrana moneta dodaje 10 punktów, ka¿da zachowana szansa dodaje 30 punktów
-            int score = 400 - (minutesScore * 60 + secondsScore) + coinCount*10 + healthCount * 30;
+            int score = 400 - (minutesScore * 60 + secondsScore) + coinCount * 20 + healthCount * 50;
             if (score < 0)
                 score = 0;
             scoreText.text = "Twój wynik: " + score;
