@@ -12,32 +12,35 @@ public class SettingsMenu : MonoBehaviour
     public Slider volumeSlider;
     public Slider volumeEffectsSlider;
 
-    float startVolume;
+    float volumeMusic = -10F;
+    float volumeEffects = 1F;
     float startEffectsVolume;
-    static float musicVolume;
 
     void Start()
     {
         int qualityCurrentIndex = QualitySettings.GetQualityLevel();
         qualityDropdown.value = qualityCurrentIndex;
 
-        effectsMixer.GetFloat("volume", out startEffectsVolume);
-        volumeEffectsSlider.value = startEffectsVolume;
+        volumeEffects = PlayerPrefs.GetFloat("volumeEffects");
+        volumeEffectsSlider.value = volumeEffects;
+        effectsMixer.SetFloat("volume", volumeEffects);
 
-        audioMixer.GetFloat("volume", out startVolume);
-        volumeSlider.value = startVolume;
+        volumeMusic = PlayerPrefs.GetFloat("volumeMusic");
+        volumeSlider.value = volumeMusic;
+        audioMixer.SetFloat("volume", volumeMusic);
 
     }
 
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
-        musicVolume = volume;
+        PlayerPrefs.SetFloat("volumeMusic", volume);
     }
 
     public void SetEffectsVolume(float volume)
     {
         effectsMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volumeEffects", volume);
     }
 
     public void SetQuality(int qualityIndex)

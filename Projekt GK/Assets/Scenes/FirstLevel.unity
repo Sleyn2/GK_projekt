@@ -26094,6 +26094,7 @@ GameObject:
   - component: {fileID: 1994833308}
   - component: {fileID: 1994833311}
   - component: {fileID: 1994833312}
+  - component: {fileID: 1994833313}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -26301,6 +26302,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1994833313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994833306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc13350807e3f34382eba239b9ed70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMixer: {fileID: 24100000, guid: caa9efbdb50a94a47b24c92215fc1a7f, type: 2}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &2021479768
 PrefabInstance:
   m_ObjectHideFlags: 0
