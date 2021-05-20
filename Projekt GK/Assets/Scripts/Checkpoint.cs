@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -10,10 +11,18 @@ public class Checkpoint : MonoBehaviour
     public bool active;
     public ParticleSystem magicznyPylLauncher;
 
+    public AudioClip checkpointAudio;
+
+    public AudioMixer effectsMixer;
+
+    AudioSource getCheckpoint;
+
     // Start is called before the first frame update
     void Start()
     {
         healthManager = FindObjectOfType<HealthManager>();
+        getCheckpoint = gameObject.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -47,6 +56,10 @@ public class Checkpoint : MonoBehaviour
         {
             healthManager.SetSpawnPoint(this.transform.position);
             CheckpointOn();
+
+            effectsMixer.GetFloat("volume", out float effectsVolume);
+
+            getCheckpoint.PlayOneShot(checkpointAudio, effectsVolume * 0.1F);
 
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
