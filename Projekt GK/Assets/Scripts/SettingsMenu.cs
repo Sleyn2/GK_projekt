@@ -14,6 +14,8 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
+
+
         int qualityCurrentIndex = QualitySettings.GetQualityLevel();
         qualityDropdown.value = qualityCurrentIndex;
 

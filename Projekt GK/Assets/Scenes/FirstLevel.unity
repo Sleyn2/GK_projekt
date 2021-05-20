@@ -426,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 1282688809}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: 9e7a9c22a8d8f514c978846de67944af, type: 3}
 --- !u!1 &101025293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,6 +3241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 1282688809}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: 9e7a9c22a8d8f514c978846de67944af, type: 3}
 --- !u!1001 &476616634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3369,6 +3371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 1282688809}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: 9e7a9c22a8d8f514c978846de67944af, type: 3}
 --- !u!1 &507186931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 170710, guid: 38c2e9df535eb8b4fbee8f766e484fdd, type: 3}
@@ -5013,6 +5016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 1282688809}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: 9e7a9c22a8d8f514c978846de67944af, type: 3}
 --- !u!1 &861603469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 170710, guid: 38c2e9df535eb8b4fbee8f766e484fdd, type: 3}
@@ -10795,6 +10799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 1282688809}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: 9e7a9c22a8d8f514c978846de67944af, type: 3}
 --- !u!1 &1151810815
 GameObject:
   m_ObjectHideFlags: 0
