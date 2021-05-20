@@ -16,6 +16,7 @@ public class LevelEndPoint : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI personalBestScoreText;
     public TextMeshProUGUI newRecordText;
+    public TextMeshProUGUI endScreenText;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class LevelEndPoint : MonoBehaviour
 
             personalBestScoreText.text = "Twój najlepszy wynik: " + personalBestScore;
 
-            if (score > personalBestScore) // New record
+            if (score > personalBestScore)
             {
                 newRecordText.gameObject.SetActive(true);
                 savedScore.edit(SceneManager.GetActiveScene().buildIndex - 2, score);
@@ -67,18 +68,12 @@ public class LevelEndPoint : MonoBehaviour
 
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                // Add Last level completition screen to add
-                Debug.Log("Win");
-                //Cursor.lockState = CursorLockMode.Confined;
-                //SceneManager.LoadScene("LevelSelection");
+                endScreenText.text = "Gratulacje! Ukoñczy³eœ ostatni poziom!";
                 levelEndScreenUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                //SceneManager.LoadScene("LevelSelection");
-                //Cursor.lockState = CursorLockMode.Confined;
-                //SceneManager.LoadScene(nextSceneLoad);
                 levelEndScreenUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
 
