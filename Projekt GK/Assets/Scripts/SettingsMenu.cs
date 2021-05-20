@@ -10,13 +10,21 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer effectsMixer;
     public Dropdown qualityDropdown;
     public Slider volumeSlider;
+    public Slider volumeEffectsSlider;
+
+    float startVolume;
+    float startEffectsVolume;
+    static float musicVolume;
 
     void Start()
     {
         int qualityCurrentIndex = QualitySettings.GetQualityLevel();
         qualityDropdown.value = qualityCurrentIndex;
 
-        audioMixer.GetFloat("volume", out float startVolume);
+        effectsMixer.GetFloat("volume", out startEffectsVolume);
+        volumeEffectsSlider.value = startEffectsVolume;
+
+        audioMixer.GetFloat("volume", out startVolume);
         volumeSlider.value = startVolume;
 
     }
@@ -24,6 +32,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+        musicVolume = volume;
     }
 
     public void SetEffectsVolume(float volume)
