@@ -7730,6 +7730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &355725049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10090,6 +10092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &412243248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13132,6 +13136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &650434433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14813,6 +14819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1 &820695983
 GameObject:
   m_ObjectHideFlags: 0
@@ -17963,6 +17971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1 &1207164189
 GameObject:
   m_ObjectHideFlags: 0
@@ -18023,6 +18033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1 &1207672134
 GameObject:
   m_ObjectHideFlags: 0
@@ -18083,6 +18095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1212355681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18212,6 +18226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1222192796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19306,6 +19322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1285684791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20586,6 +20604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1 &1441158425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 170710, guid: 38c2e9df535eb8b4fbee8f766e484fdd, type: 3}
@@ -20665,6 +20685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1460419936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22537,6 +22559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1637159875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22804,6 +22828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1001 &1664970372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24511,6 +24537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getCoin: {fileID: 2049752059}
   coinValue: 1
+  getCoinAudio: {fileID: 8300000, guid: c63e00d79344f754f8c006a5ca2b8e4d, type: 3}
+  effectsMixer: {fileID: 24100000, guid: 2172d7a4f2ed83c4ea03679527ceba2c, type: 2}
 --- !u!1 &1794686837
 GameObject:
   m_ObjectHideFlags: 0

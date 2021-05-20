@@ -11,6 +11,8 @@ public class CoinPickup : MonoBehaviour
 
     public AudioClip getCoinAudio;
 
+    public AudioMixer effectsMixer;
+
 
 
     // Start is called before the first frame update
@@ -33,7 +35,9 @@ public class CoinPickup : MonoBehaviour
 
             Instantiate(getCoin, transform.position, Quaternion.identity);
 
-            AudioSource.PlayClipAtPoint(getCoinAudio, transform.position);
+            effectsMixer.GetFloat("volume", out float effectsVolume);
+
+            AudioSource.PlayClipAtPoint(getCoinAudio, transform.position, effectsVolume);
 
             Destroy(gameObject);
 

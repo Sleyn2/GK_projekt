@@ -7,40 +7,14 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public Dropdown resolutionDropdown;
+    public AudioMixer effectsMixer;
     public Dropdown qualityDropdown;
     public Slider volumeSlider;
-    Resolution[] resolutions;
 
     void Start()
     {
-
-
         int qualityCurrentIndex = QualitySettings.GetQualityLevel();
         qualityDropdown.value = qualityCurrentIndex;
-
-
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int currentResolutionIndex = 0;
-        for (int i = 0; i<resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
 
         audioMixer.GetFloat("volume", out float startVolume);
         volumeSlider.value = startVolume;
@@ -50,6 +24,11 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+    }
+
+    public void SetEffectsVolume(float volume)
+    {
+        effectsMixer.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)
@@ -62,9 +41,4 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    public void SetResolution(int resolutionIndex)
-    {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
 }
