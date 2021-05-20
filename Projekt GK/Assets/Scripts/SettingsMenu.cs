@@ -9,6 +9,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
     public Dropdown qualityDropdown;
+    public Slider volumeSlider;
     Resolution[] resolutions;
 
     void Start()
@@ -38,11 +39,15 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        audioMixer.GetFloat("volume", out float startVolume);
+        volumeSlider.value = startVolume;
+
     }
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)
