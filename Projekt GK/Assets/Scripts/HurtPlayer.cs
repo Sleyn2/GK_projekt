@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class HurtPlayer : MonoBehaviour
 {
-
+    
     public int damageToGive;
 
+    void Start()
+    {
+
+    }
     private void OnTriggerStay(Collider other)
     {
+
         if(other.gameObject.tag=="Player")
         {
             Vector3 hitDirection = other.transform.position - transform.position;

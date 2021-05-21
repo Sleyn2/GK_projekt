@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 
 public class LevelEndPoint : MonoBehaviour
@@ -17,17 +18,25 @@ public class LevelEndPoint : MonoBehaviour
     public TextMeshProUGUI personalBestScoreText;
     public TextMeshProUGUI newRecordText;
     public TextMeshProUGUI endScreenText;
+    public AudioClip clipEnd;
+    AudioSource audioEnd;
+    float effectsVolume;
 
     // Start is called before the first frame update
     void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        effectsVolume = PlayerPrefs.GetFloat("volumeEffects");
+        audioEnd = gameObject.GetComponent<AudioSource>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
+            //dzwiek zakoñczenia poziomu
+            audioEnd.PlayOneShot(clipEnd, effectsVolume);
+
             //Zakoñczenie liczenia czasu
             GameObject.Find("Player").SendMessage("finish");
 
